@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déposer un livre – Leaf & Loop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="déposé_livre.css">
+</head>
+<body >
+    <!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">
+        <img src="logo2.png" alt="BookCycle Logo">
+        <h1>Leaf &amp; Loop</h1>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <i class="fa fa-home icon"></i>
+            <a href="acceuil2.html">Accueil</a>
+        </li>
+        <li>
+            <i class="fa fa-shopping-cart icon"></i>
+            <a href="panier.html" style="position:relative;">
+                Panier
+                <span id="navCartCount" style="position:absolute;top:-8px;right:-12px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;font-size:.62rem;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid white;">0</span>
+            </a>
+        </li>
+        <li class="nav-sell">
+            <a href="deposé_livre.html" class="btn-sell">
+                <i class="fa fa-book icon-sell"></i>
+                Vendre un livre
+            </a>
+        </li>
+        <li>
+            <i class="fa fa-user icon"></i>
+            <a href="contact.html">Mon compte</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="page-content">
+    <!-- En-tête -->
+    <div class="page-header">
+        <div class="icon"><a href="acceuil2.html" ><img src="logo2.png" style="width:80px; height: 80px; padding-top: 8px; padding-bottom: 1px;"></a></div>
+        <h1>Déposer un livre à vendre</h1>
+        <p>Remplissez les informations ci-dessous</p>
+    </div>
+
+    <!-- Formulaire -->
+    <div class="card">
+        <form action="#" method="post" enctype="multipart/form-data">
+
+            <!-- SECTION 1 : Informations du livre -->
+            <div class="section-title">📖 Informations du livre</div>
+
+            <div class="row">
+                <div class="field">
+                    <label for="titre">Titre du livre *</label>
+                    <input id="titre" type="text" name="titre" placeholder="Ex : Le Petit Prince" required>
+                </div>
+                <div class="field">
+                    <label for="auteur">Auteur *</label>
+                    <input id="auteur" type="text" name="auteur" placeholder="Ex : Saint-Exupéry" required>
+                </div>
+                <div class="field">
+                    <label for="categorie">Catégorie *</label>
+                    <select id="categorie" name="categorie" required>
+                        <option value="">Choisir…</option>
+                        <option>📖 Roman</option>
+                        <option>🎓 Architecture</option>
+                        <option>🔬 Science</option>
+                        <option>🎨 Arts</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="etat">État du livre *</label>
+                    <select id="etat" name="etat" required>
+                        <option value="">Choisir…</option>
+                        <option>⭐⭐⭐⭐⭐ Comme neuf</option>
+                        <option>⭐⭐⭐⭐ Très bon état</option>
+                        <option>⭐⭐⭐ Bon état</option>
+                        <option>⭐⭐ État correct</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="prix">Prix souhaité (DT) *</label>
+                    <input id="prix" type="number" name="prix" placeholder="Ex : 25" min="1" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="description">Description (optionnel)</label>
+                <textarea id="description" name="description" rows="3" placeholder="Dédicace, édition spéciale, annotations…"></textarea>
+            </div>
+
+            <!-- SECTION 2 : Photo -->
+            <div class="section-title">📸 Photo du livre</div>
+
+            <label for="photoInput">
+                <div class="upload-zone">
+                    <i class="fa fa-cloud-upload-alt"></i>
+                    <p>Cliquez pour ajouter une photo</p>
+                    <span>JPG, PNG – max 5 Mo</span>
+                </div>
+            </label>
+            <input type="file" id="photoInput" name="photo" accept="image/*"
+                   style="display:none"
+                   onchange="
+                     var prev = document.getElementById('photoPreview');
+                     prev.src = URL.createObjectURL(this.files[0]);
+                     prev.style.display = 'block';
+                   ">
+            <img id="photoPreview" alt="Aperçu de la photo">
+
+            <!-- SECTION 3 : Coordonnées du vendeur -->
+            <div class="section-title">👤 Vos coordonnées</div>
+
+            <div class="row">
+                <div class="field">
+                    <label for="nom">Nom complet *</label>
+                    <input id="nom" type="text" name="nom" placeholder="Votre nom" required>
+                </div>
+                <div class="field">
+                    <label for="tel">Téléphone *</label>
+                    <input id="tel" type="tel" name="telephone" placeholder="+216 XX XXX XXX" required>
+                </div>
+            </div>
+            <div class="field">
+                <label for="email">Email *</label>
+                <input id="email" type="email" name="email" placeholder="votre@email.com" required>
+            </div>
+
+            <!-- Bouton -->
+            <button type="submit" class="btn-submit">
+                <i class="fa fa-paper-plane"></i> Publier mon annonce
+            </button>
+
+        </form>
+    </div>
+
+    <a href="acceuil2.html" class="back-link">← Retour à l'accueil</a>
+
+</div><!-- /.page-content -->
+
+</body>
+</html>

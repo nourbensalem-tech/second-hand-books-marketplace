@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf & Loop – Book Cycle</title>
+    <script src="recherche.js"></script>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo2.png" alt="BookCycle Logo">
+            <h1>Leaf &amp; Loop</h1>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <i class="fa fa-home icon"></i>
+                <a href="#">Accueil</a>
+            </li>
+            <li>
+                <i class="fa fa-shopping-cart icon"></i>
+                <a href="panier.html" style="position:relative;">
+                    Panier
+                    <span id="navCartCount" style="position:absolute;top:-8px;right:-12px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;font-size:.62rem;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid white;">0</span>
+                </a>
+            </li>
+            <!-- NEW: Déposer un livre -->
+            <li class="nav-sell">
+                <a href="#id" class="btn-sell" onclick="openModal()">
+                    <i class="fa fa-book icon-sell"></i>
+                    Vendre un livre
+                </a>
+            </li>
+            <li>
+                <i class="fa fa-user icon"></i>
+                <a href="contact.html">Mon compte</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- SEARCH -->
+    <div class="search-container">
+        <div class="search-box">
+            <i class="fa fa-search" style="color:#aaa; padding: 0 0.5rem;"></i>
+            <input type="text" id="champRechercheAccueil" placeholder="Rechercher un livre par titre…">
+            <button onclick="rechercherDisponibilite()">Rechercher</button>
+        </div>
+    </div>
+
+    <!-- TOAST ACCUEIL -->
+    <div id="toastAccueil" style="
+        position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(20px);
+        background:#333; color:#fff; padding:.75rem 1.5rem; border-radius:2rem;
+        font-size:.9rem; opacity:0; transition:all .3s ease; z-index:9999; pointer-events:none;
+        white-space:nowrap;
+    "></div>
+
+    <!-- MODALE DISPONIBILITÉ -->
+    <div id="modalDisponibilite" style="
+        display:none; position:fixed; inset:0; background:rgba(0,0,0,.55);
+        z-index:10000; align-items:center; justify-content:center;
+    ">
+        <div id="modalContenu" style="
+            background:#fff; border-radius:1.5rem; padding:2.5rem 2rem;
+            max-width:420px; width:90%; text-align:center;
+            box-shadow:0 20px 60px rgba(0,0,0,.25); animation:slideUp .3s ease;
+        "></div>
+    </div>
+
+    <style>
+        #modalDisponibilite.active { display:flex !important; }
+        #toastAccueil.show { opacity:1 !important; transform:translateX(-50%) translateY(0) !important; }
+        @keyframes slideUp {
+            from { opacity:0; transform:translateY(30px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        .modal-icon { font-size:3rem; margin-bottom:.75rem; }
+        .modal-titre { font-family:'Playfair Display', serif; font-size:1.4rem; margin:.5rem 0; color:#2d3748; }
+        .modal-message { color:#555; font-size:.95rem; line-height:1.6; margin:.5rem 0; }
+        .modal-livre-nom { background:#f0f4ff; border-radius:.75rem; padding:.6rem 1rem; color:#4a5568; font-weight:600; margin:.75rem 0; font-size:.95rem; }
+        .modal-suggestion { background:#fff8e1; border-radius:.75rem; padding:.6rem 1rem; color:#7a6000; font-size:.9rem; margin:.75rem 0; }
+        .modal-actions { display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap; margin-top:1.25rem; }
+        .btn-modal-primary {
+            background:linear-gradient(135deg,#667eea,#764ba2); color:#fff;
+            padding:.65rem 1.4rem; border-radius:2rem; text-decoration:none;
+            font-size:.9rem; font-weight:600; border:none; cursor:pointer;
+            transition:opacity .2s;
+        }
+        .btn-modal-primary:hover { opacity:.85; }
+        .btn-modal-secondary {
+            background:transparent; color:#667eea; border:2px solid #667eea;
+            padding:.6rem 1.3rem; border-radius:2rem; text-decoration:none;
+            font-size:.9rem; font-weight:600; cursor:pointer; transition:all .2s;
+        }
+        .btn-modal-secondary:hover { background:#667eea; color:#fff; }
+    </style>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Achetez &amp; vendez des livres d'occasion</h1>
+        <p>Donnez une seconde vie à vos livres avec Leaf &amp; Loop. Rejoignez une communauté de passionnés de lecture engagés pour l'écologie et le partage.</p>
+        <div class="hero-actions">
+            <a href="market.html" class="btn-primary">Explorer les livres 📖</a>
+            <a href="deposé_livre.html" class="btn-secondary" onclick="openModal()">Déposer un livre 📚</a>
+        </div>
+       
+    </section>
+
+    <!-- POPULAR BOOKS -->
+    <section id="s2">
+        <h2>Livres populaires</h2>
+        <div class="book-container">
+            <div class="book-card">
+                <div class="book-badge">Populaire</div>
+                <img src="livre1.png" alt="Don Quichotte">
+                <h3>Don Quichotte</h3>
+                <p class="book-author">Miguel de Cervantes</p>
+                <p class="book-price">25 – 40 DT</p>
+                <button class="btn-primary btn-card" onclick="addToCartAndNotify('don-quichotte', this)">
+                    <span>🛒</span> Commander
+                </button>
+            </div>
+            <div class="book-card">
+                <img src="livre2.png" alt="A Tale of Two Cities">
+                <h3>A Tale of Two Cities</h3>
+                <p class="book-author">Charles Dickens</p>
+                <p class="book-price">20 – 35 DT</p>
+                <button class="btn-primary btn-card" onclick="addToCartAndNotify('two-cities', this)">
+                    <span>🛒</span> Commander
+                </button>
+            </div>
+            <div class="book-card">
+                <div class="book-badge">Classique</div>
+                <img src="livre3.png" alt="Le Petit Prince">
+                <h3>Le Petit Prince</h3>
+                <p class="book-author">Antoine de Saint-Exupéry</p>
+                <p class="book-price">15 – 30 DT</p>
+                <button class="btn-primary btn-card" onclick="addToCartAndNotify('petit-prince', this)">
+                    <span>🛒</span> Commander
+                </button>
+            </div>
+            <div class="book-card">
+                <img src="livre4.png" alt="Harry Potter">
+                <h3>Harry Potter</h3>
+                <p class="book-author">J.K. Rowling</p>
+                <p class="book-price">30 – 50 DT</p>
+                <button class="btn-primary btn-card" onclick="addToCartAndNotify('harry-potter', this)">
+                    <span>🛒</span> Commander
+                </button>
+            </div>
+            <div class="book-card">
+                <img src="livre5.png" alt="The Hobbit">
+                <h3>The Hobbit</h3>
+                <p class="book-author">J.R.R. Tolkien</p>
+                <p class="book-price">25 – 45 DT</p>
+                <button class="btn-primary btn-card" onclick="addToCartAndNotify('hobbit', this)">
+                    <span>🛒</span> Commander
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="id">
+        <h2>Comment ça marche ?</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-icon">📸</div>
+                <h4>1. Photographiez</h4>
+                <p>Prenez une photo de votre livre et remplissez les informations</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step">
+                <div class="step-icon">💰</div>
+                <h4>2. Fixez votre prix</h4>
+                <p>Choisissez librement votre prix de vente</p>
+            </div>
+            <div class="step-arrow">→</div>
+            <div class="step">
+                <div class="step-icon">📦</div>
+                <h4>3. Expédiez</h4>
+                <p>Un acheteur trouvé, envoyez votre livre et recevez votre paiement</p>
+            </div>
+        </div>
+        <button class="btn-primary" onclick="openModal()" style="margin-top:2rem; border:none; cursor:pointer; font-size:1rem;">
+            <a href="deposé_livre.html" style="text-decoration: none;color:white">Commencer à vendre 🚀</a>
+        </button>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="logo2.png" alt="logo" width="40">
+                <span>Leaf &amp; Loop</span>
+            </div>
+            <p>© 2026 BookCycle – Donnez une seconde vie à vos livres</p>
+            <div class="footer-links">
+                <a href="#">Confidentialité</a>
+                <a href="#">CGU</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script>
+        function openModal() {
+            document.getElementById('sellModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('sellModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function closeOnBackdrop(e) {
+            if (e.target === document.getElementById('sellModal')) closeModal();
+        }
+        function previewPhoto(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const prev = document.getElementById('photoPreview');
+            prev.src = URL.createObjectURL(file);
+            prev.style.display = 'block';
+        }
+        function submitBook(e) {
+            e.preventDefault();
+            closeModal();
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    </script>
+
+    <!-- ── CART LOGIC ── -->
+    <script>
+        const BOOKS = {
+            "don-quichotte": { title:"Don Quichotte",        author:"Miguel de Cervantes",      price:32, condition:"Très bon état", img:"livre1.png" },
+            "two-cities":    { title:"A Tale of Two Cities",  author:"Charles Dickens",          price:27, condition:"Bon état",      img:"livre2.png" },
+            "petit-prince":  { title:"Le Petit Prince",       author:"Antoine de Saint-Exupéry", price:22, condition:"Comme neuf",   img:"livre3.png" },
+            "harry-potter":  { title:"Harry Potter",          author:"J.K. Rowling",             price:40, condition:"Bon état",      img:"livre4.png" },
+            "hobbit":        { title:"The Hobbit",             author:"J.R.R. Tolkien",           price:35, condition:"Très bon état", img:"livre5.png" },
+        };
+
+        function getCart() { return JSON.parse(localStorage.getItem('leafloop_cart') || '[]'); }
+        function saveCart(c) { localStorage.setItem('leafloop_cart', JSON.stringify(c)); }
+
+        function updateNavBadge() {
+            const total = getCart().reduce((s,i) => s + i.qty, 0);
+            const badge = document.getElementById('navCartCount');
+            if (badge) badge.textContent = total;
+        }
+
+        function addToCartAndNotify(bookId, btn) {
+            const book = BOOKS[bookId];
+            if (!book) return;
+            let cart = getCart();
+            const existing = cart.find(i => i.id === bookId);
+            if (existing) { existing.qty++; }
+            else { cart.push({ id: bookId, qty: 1, ...book }); }
+            saveCart(cart);
+            updateNavBadge();
+
+            // Button feedback
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<span>✅</span> Ajouté !';
+            btn.style.background = 'linear-gradient(135deg,#48bb78,#38a169)';
+            setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; }, 900);
+
+            // Go to panier
+            setTimeout(() => { window.location.href = 'panier.html'; }, 5000);
+        }
+
+        // Init badge on load
+        updateNavBadge();
+    </script>
+
+</body>
+</html>

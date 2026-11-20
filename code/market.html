@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Marketplace - BookCycle</title>
+<link rel="stylesheet" href="market.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">
+        <img src="logo2.png" alt="BookCycle Logo">
+        <h1>Leaf &amp; Loop</h1>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <i class="fa fa-home icon"></i>
+            <a href="acceuil2.html">Accueil</a>
+        </li>
+        <li>
+            <i class="fa fa-shopping-cart icon"></i>
+            <a href="panier.html" style="position:relative;">
+                Panier
+                <span id="navCartCount" style="position:absolute;top:-8px;right:-12px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;font-size:.62rem;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid white;">0</span>
+            </a>
+        </li>
+        <li class="nav-sell">
+            <a href="deposé_livre.html" class="btn-sell">
+                <i class="fa fa-book icon-sell"></i>
+                Vendre un livre
+            </a>
+        </li>
+        <li>
+            <i class="fa fa-user icon"></i>
+            <a href="contact.html">Mon compte</a>
+        </li>
+    </ul>
+</nav>
+<!-- CATEGORIES -->
+<section class="categories">
+    <h2>Tous les rayons de l'univers Livres</h2>
+
+    <div class="cat-container">
+        <a href="#s1"><div class="cat">📖 Romans</div></a>
+        <a href="#s2"><div class="cat">🎓 Architecture</div></a>
+        <a href="#s3"><div class="cat">🔬 Science</div></a>
+        <a href="#s4"><div class="cat">🎨 Arts</div></a>
+    </div>
+</section>
+<!-- SECTION 1 -->
+<section class="section">
+    <h2>Les nouveautés</h2>
+
+    <div class="books">
+
+        <div class="card">
+            <img src="l1.png">
+            <h4>Great Big Beautiful Life</h4>
+            <p>55 DT</p>
+            <button onclick="addToCartMarket('great-big', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="l2.png">
+            <h4>Midnight Black</h4>
+            <p>65 DT</p>
+            <button onclick="addToCartMarket('midnight-black', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="l3.png">
+            <h4>Everything Is Tuberculosis</h4>
+            <p>50 DT</p>
+            <button onclick="addToCartMarket('tuberculosis', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="l4.png">
+            <h4>The Impossible Fortune</h4>
+            <p>60 DT</p>
+            <button onclick="addToCartMarket('impossible', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+        <div class="card">
+            <img src="l5.png">
+            <h4>Onyx Storm</h4>
+            <p>70 DT</p>
+            <button onclick="addToCartMarket('onyx-storm', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- SECTION 2 -->
+<section class="section">
+    <h2>Les meilleures ventes</h2>
+
+    <div class="books">
+
+        <div class="card">
+            <img src="l11.png">
+            <h4>Project Hail Mary</h4>
+            <p>90 DT</p>
+            <button onclick="addToCartMarket('hail-mary', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="l22.png">
+            <h4>The Astral Library</h4>
+            <p>100 DT</p>
+            <button onclick="addToCartMarket('astral-lib', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="l33.png">
+            <h4>Le crime du paradis</h4>
+            <p>85 DT</p>
+            <button onclick="addToCartMarket('crime-paradis', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="l44.png">
+            <h4>The Wings That Bind</h4>
+            <p>140 DT</p>
+            <button onclick="addToCartMarket('wings-bind', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="l55.png">
+            <h4>Quelqu'un d'autret</h4>
+            <p>120 DT</p>
+            <button onclick="addToCartMarket('quelquun', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+    </div>
+</section>
+<!-- SECTION 3 -->
+<section class="section" id="s1">
+    <h2>livres arabes</h2>
+
+    <div class="books">
+
+        <div class="card">
+            <img src="l111.png">
+            <h4>البخلاء – الجاحظ</h4>
+            <p>~ 20 – 35 DT</p>
+            <button onclick="addToCartMarket('bukhala', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="l222.png">
+            <h4>ألف ليلة وليلة</h4>
+            <p>~ 30 – 60 DT</p>
+            <button onclick="addToCartMarket('alf-layla', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="l333.png">
+            <h4>عزازيل</h4>
+            <p>~ 30 – 50 DT</p>
+            <button onclick="addToCartMarket('azazil', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="l444.png">
+            <h4>مخمل (Velvet)</h4>
+            <p>140 DT</p>
+            <button onclick="addToCartMarket('makhmal', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="l555.png">
+            <h4>المقدمة</h4>
+            <p>95 DT</p>
+            <button onclick="addToCartMarket('muqaddima', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+    </div>
+</section>
+<!-- SECTION 4 -->
+<section class="section" id="s3">
+    <h2>livres Sciences Humaines</h2>
+
+    <div class="books">
+
+        <div class="card">
+            <img src="s1.png">
+            <h4>De l'angoisse à l'espoir</h4>
+            <p>32 DT</p>
+            <button onclick="addToCartMarket('angoisse', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s2.png">
+            <h4>L'Oracle de la sagesse du yoga</h4>
+            <p>104 DT</p>
+            <button onclick="addToCartMarket('oracle-yoga', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s3.png">
+            <h4>Tarot de Marseille Vintage</h4>
+            <p>99 DT</p>
+            <button onclick="addToCartMarket('tarot', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s4.png">
+            <h4>La Conference Des Oiseaux</h4>
+            <p>21 DT</p>
+            <button onclick="addToCartMarket('oiseaux', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s5.png">
+            <h4>Le voyage nocturne du Prophète Muhammad</h4>
+            <p>33 DT</p>
+            <button onclick="addToCartMarket('voyage-noc', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+    </div>
+</section> 
+
+<!-- SECTION 5 -->
+<section class="section" id="s4">
+    <h2>livres Arts</h2>
+
+    <div class="books">
+
+        <div class="card">
+            <img src="s11.png" >
+            <h4>Le carnet pour s'endormir</h4>
+            <p>51 DT</p>
+            <button onclick="addToCartMarket('s-endormir', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s22.png">
+            <h4>Apéro Rébus et charades en famille</h4>
+            <p>23 DT</p>
+            <button onclick="addToCartMarket('rebus', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s33.png">
+            <h4>Astérix aux Jeux Olympiques - L'album du film</h4>
+            <p>39 DT</p>
+            <button onclick="addToCartMarket('asterix', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s44.png">
+            <h4>Coloriage mystère : Week-end à la campagne</h4>
+            <p>62 DT</p>
+            <button onclick="addToCartMarket('coloriage', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s55.png">
+            <h4>Mes chats beautés</h4>
+            <p>66 DT</p>
+            <button onclick="addToCartMarket('chats', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- SECTION 6 -->
+<section class="section" id="s2">
+    <h2>livres Architecture</h2>
+
+    <div class="books">
+
+        <div class="card">
+            <img src="s111.png" >
+            <h4>Urbanisme</h4>
+            <p>52 DT</p>
+            <button onclick="addToCartMarket('urbanisme', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s222.png">
+            <h4>Zaha Hadid (1950-2016) - Faire exploser l'espace pour le remettre en forme</h4>
+            <p>63 DT</p>
+            <button onclick="addToCartMarket('zaha', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s333.png">
+            <h4>Le Corbusier 1887-1965 - Un lyrisme pour l'architecture de l'âge de la machine</h4>
+            <p>60 DT</p>
+            <button onclick="addToCartMarket('corbusier', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s444.png">
+            <h4>Odilon Redon (1840-1916) - Le prince des rêves</h4>
+            <p>33 DT</p>
+            <button onclick="addToCartMarket('redon', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+        <div class="card">
+            <img src="s555.png">
+            <h4>1000 Chairs</h4>
+            <p>84 DT</p>
+            <button onclick="addToCartMarket('chairs', this)"><span class="icon">🛒</span>Commander</button>
+        </div>
+
+    </div>
+</section>
+
+   <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="logo2.png" alt="logo" width="40">
+                <a href="acceuil2.html" style="text-decoration: none;"><span>Leaf &amp; Loop</span></a>
+            </div>
+            <p>© 2026 BookCycle – Donnez une seconde vie à vos livres</p>
+            <div class="footer-links">
+                <a href="acceuil2.html">Acceuil</a>
+                <a href="deposé_livre.html">Vendre livre</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+<!-- CART SCRIPT -->
+<script>
+    /* ── Catalogue market ── */
+    const MARKET_BOOKS = {
+        /* Nouveautés */
+        "great-big":       { title:"Great Big Beautiful Life",        author:"",              price:55,  condition:"Bon état",       img:"l1.png"   },
+        "midnight-black":  { title:"Midnight Black",                  author:"",              price:65,  condition:"Bon état",       img:"l2.png"   },
+        "tuberculosis":    { title:"Everything Is Tuberculosis",       author:"",              price:50,  condition:"Bon état",       img:"l3.png"   },
+        "impossible":      { title:"The Impossible Fortune",           author:"",              price:60,  condition:"Bon état",       img:"l4.png"   },
+        "onyx-storm":      { title:"Onyx Storm",                       author:"",              price:70,  condition:"Bon état",       img:"l5.png"   },
+        /* Meilleures ventes */
+        "hail-mary":       { title:"Project Hail Mary",               author:"",              price:90,  condition:"Très bon état",  img:"l11.png"  },
+        "astral-lib":      { title:"The Astral Library",              author:"",              price:100, condition:"Bon état",       img:"l22.png"  },
+        "crime-paradis":   { title:"Le crime du paradis",             author:"",              price:85,  condition:"Bon état",       img:"l33.png"  },
+        "wings-bind":      { title:"The Wings That Bind",             author:"",              price:140, condition:"Très bon état",  img:"l44.png"  },
+        "quelquun":        { title:"Quelqu'un d'autre",               author:"",              price:120, condition:"Bon état",       img:"l55.png"  },
+        /* Livres arabes */
+        "bukhala":         { title:"البخلاء – الجاحظ",               author:"الجاحظ",        price:28,  condition:"Bon état",       img:"l111.png" },
+        "alf-layla":       { title:"ألف ليلة وليلة",                  author:"",              price:45,  condition:"Bon état",       img:"l222.png" },
+        "azazil":          { title:"عزازيل",                          author:"",              price:40,  condition:"Bon état",       img:"l333.png" },
+        "makhmal":         { title:"مخمل (Velvet)",                   author:"",              price:140, condition:"Bon état",       img:"l444.png" },
+        "muqaddima":       { title:"المقدمة",                         author:"ابن خلدون",     price:95,  condition:"Très bon état",  img:"l555.png" },
+        /* Sciences humaines */
+        "angoisse":        { title:"De l'angoisse à l'espoir",        author:"",              price:32,  condition:"Bon état",       img:"s1.png"   },
+        "oracle-yoga":     { title:"L'Oracle de la sagesse du yoga",  author:"",              price:104, condition:"Bon état",       img:"s2.png"   },
+        "tarot":           { title:"Tarot de Marseille Vintage",       author:"",              price:99,  condition:"Bon état",       img:"s3.png"   },
+        "oiseaux":         { title:"La Conference Des Oiseaux",        author:"",              price:21,  condition:"Bon état",       img:"s4.png"   },
+        "voyage-noc":      { title:"Le voyage nocturne du Prophète",   author:"",              price:33,  condition:"Bon état",       img:"s5.png"   },
+        /* Arts */
+        "s-endormir":      { title:"Le carnet pour s'endormir",        author:"",              price:51,  condition:"Bon état",       img:"s11.png"  },
+        "rebus":           { title:"Apéro Rébus et charades en famille",author:"",             price:23,  condition:"Bon état",       img:"s22.png"  },
+        "asterix":         { title:"Astérix aux Jeux Olympiques",      author:"",              price:39,  condition:"Bon état",       img:"s33.png"  },
+        "coloriage":       { title:"Coloriage mystère : Week-end",     author:"",              price:62,  condition:"Bon état",       img:"s44.png"  },
+        "chats":           { title:"Mes chats beautés",                author:"",              price:66,  condition:"Bon état",       img:"s55.png"  },
+        /* Architecture */
+        "urbanisme":       { title:"Urbanisme",                        author:"",              price:52,  condition:"Bon état",       img:"s111.png" },
+        "zaha":            { title:"Zaha Hadid (1950-2016)",           author:"",              price:63,  condition:"Bon état",       img:"s222.png" },
+        "corbusier":       { title:"Le Corbusier 1887-1965",           author:"",              price:60,  condition:"Bon état",       img:"s333.png" },
+        "redon":           { title:"Odilon Redon (1840-1916)",         author:"",              price:33,  condition:"Bon état",       img:"s444.png" },
+        "chairs":          { title:"1000 Chairs",                      author:"",              price:84,  condition:"Bon état",       img:"s555.png" },
+    };
+
+    function getCart() { return JSON.parse(localStorage.getItem('leafloop_cart') || '[]'); }
+    function saveCart(c) { localStorage.setItem('leafloop_cart', JSON.stringify(c)); }
+
+    function updateNavBadge() {
+        const total = getCart().reduce((s,i) => s + i.qty, 0);
+        const badge = document.getElementById('navCartCount');
+        if (badge) badge.textContent = total;
+    }
+
+    function addToCartMarket(bookId, btn) {
+        const book = MARKET_BOOKS[bookId];
+        if (!book) return;
+        let cart = getCart();
+        const existing = cart.find(i => i.id === bookId);
+        if (existing) { existing.qty++; }
+        else { cart.push({ id: bookId, qty: 1, ...book }); }
+        saveCart(cart);
+        updateNavBadge();
+
+        /* Feedback visuel bouton */
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<span>✅</span> Ajouté !';
+        btn.style.background = 'linear-gradient(135deg,#48bb78,#38a169)';
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.style.background = '';
+            btn.disabled = false;
+        }, 1800);
+
+        /* Toast notification */
+        showMarketToast(`🛒 « ${book.title} » ajouté au panier !`);
+    }
+
+    function showMarketToast(msg) {
+        const t = document.getElementById('marketToast');
+        t.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(t._timer);
+        t._timer = setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    updateNavBadge();
+</script>
+
+<!-- TOAST -->
+<div id="marketToast" style="
+    position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(20px);
+    background:linear-gradient(135deg,#667eea,#764ba2); color:#fff;
+    padding:.85rem 2rem; border-radius:50px;
+    font-family:'Poppins',sans-serif; font-size:.92rem; font-weight:600;
+    opacity:0; transition:all .35s ease; z-index:9999; pointer-events:none;
+    white-space:nowrap; box-shadow:0 8px 24px rgba(102,126,234,.4);
+"></div>
+<style>
+    #marketToast.show {
+        opacity: 1 !important;
+        transform: translateX(-50%) translateY(0) !important;
+    }
+</style>
+</body>
+</html>

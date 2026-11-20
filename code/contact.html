@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Inscription - BookCycle</title>
+<link rel="stylesheet" href="contact.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  .error-msg {
+    color: #e53935;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none;
+  }
+  input.invalid {
+    border: 1.5px solid #e53935 !important;
+  }
+  input.valid {
+    border: 1.5px solid #43a047 !important;
+  }
+</style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo2.png" alt="BookCycle Logo">
+            <h1>Leaf &amp; Loop</h1>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <i class="fa fa-home icon"></i>
+                <a href="acceuil2.html">Accueil</a>
+            </li>
+            <li>
+                <i class="fa fa-shopping-cart icon"></i>
+                <a href="panier.html" style="position:relative;">
+                    Panier
+                    <span id="navCartCount" style="position:absolute;top:-8px;right:-12px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;font-size:.62rem;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid white;">0</span>
+                </a>
+            </li>
+            <!-- NEW: Déposer un livre -->
+            <li class="nav-sell">
+                <a href="deposé_livre.html" class="btn-sell">
+                    <i class="fa fa-book icon-sell"></i>
+                    Vendre un livre
+                </a>
+            </li>
+            <li>
+                <i class="fa fa-user icon"></i>
+                <a href="contact.html">Mon compte</a>
+            </li>
+        </ul>
+    </nav>
+
+<section class="form-section">
+
+    <form class="form-container" id="registerForm" onsubmit="validerFormulaire(event)">
+
+        <h2>📚 Créer un compte 📚</h2>
+
+        <!-- 1. Informations personnelles -->
+        <div class="form-group">
+            <h3>Informations personnelles</h3>
+
+            <div class="input-row">
+                <div>
+                  <input type="text" id="nom" placeholder="Nom" required>
+                  <span class="error-msg" id="err-nom">Le nom doit contenir au moins 2 caractères.</span>
+                </div>
+                <div>
+                  <input type="text" id="prenom" placeholder="Prénom" required>
+                  <span class="error-msg" id="err-prenom">Le prénom doit contenir au moins 2 caractères.</span>
+                </div>
+            </div>
+
+            <input type="email" id="email" placeholder="Email" required>
+            <span class="error-msg" id="err-email">Veuillez entrer un email valide (ex: exemple@mail.com).</span>
+        </div>
+
+        <!-- 2. Adresse -->
+        <div class="form-group">
+            <h3>Informations d'adresse</h3>
+
+            <input type="text" id="telephone" placeholder="Téléphone" required>
+            <span class="error-msg" id="err-telephone">Le téléphone doit contenir 8 chiffres.</span>
+
+            <input type="text" id="adresse" placeholder="Adresse" required>
+            <span class="error-msg" id="err-adresse">L'adresse ne peut pas être vide.</span>
+
+            <div class="input-row">
+                <div>
+                  <input type="text" id="ville" placeholder="Ville" required>
+                  <span class="error-msg" id="err-ville">La ville ne peut pas être vide.</span>
+                </div>
+                <div>
+                  <input type="text" id="codepostal" placeholder="Code postal" required>
+                  <span class="error-msg" id="err-codepostal">Le code postal doit contenir 4 chiffres.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Connexion -->
+        <div class="form-group">
+            <h3>Connexion</h3>
+
+            <input type="password" id="motdepasse" placeholder="Mot de passe" required>
+            <span class="error-msg" id="err-motdepasse">Le mot de passe doit contenir au moins 6 caractères.</span>
+
+            <input type="password" id="confirmer" placeholder="Confirmer le mot de passe" required>
+            <span class="error-msg" id="err-confirmer">Les mots de passe ne correspondent pas.</span>
+        </div>
+
+        <button type="submit">S'inscrire</button>
+
+    </form>
+
+</section>
+
+<!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="logo2.png" alt="logo" width="40">
+                <span>Leaf &amp; Loop</span>
+            </div>
+            <p>© 2026 BookCycle – Donnez une seconde vie à vos livres</p>
+            <div class="footer-links">
+                <a href="#">Confidentialité</a>
+                <a href="#">CGU</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+<script>
+  // Afficher ou cacher un message d'erreur
+  function afficherErreur(id, afficher) {
+    var msg = document.getElementById("err-" + id);
+    var input = document.getElementById(id);
+    if (afficher) {
+      msg.style.display = "block";
+      input.classList.add("invalid");
+      input.classList.remove("valid");
+    } else {
+      msg.style.display = "none";
+      input.classList.remove("invalid");
+      input.classList.add("valid");
+    }
+  }
+
+  // Validation au moment de la soumission
+  function validerFormulaire(event) {
+    event.preventDefault();
+    var valide = true;
+
+    // Nom (min 2 caractères, lettres seulement)
+    var nom = document.getElementById("nom").value.trim();
+    if (nom.length < 2) {
+      afficherErreur("nom", true); valide = false;
+    } else {
+      afficherErreur("nom", false);
+    }
+
+    // Prénom (min 2 caractères)
+    var prenom = document.getElementById("prenom").value.trim();
+    if (prenom.length < 2) {
+      afficherErreur("prenom", true); valide = false;
+    } else {
+      afficherErreur("prenom", false);
+    }
+
+    // Email (format valide)
+    var email = document.getElementById("email").value.trim();
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      afficherErreur("email", true); valide = false;
+    } else {
+      afficherErreur("email", false);
+    }
+
+    // Téléphone (8 chiffres)
+    var tel = document.getElementById("telephone").value.trim();
+    var telRegex = /^\d{8}$/;
+    if (!telRegex.test(tel)) {
+      afficherErreur("telephone", true); valide = false;
+    } else {
+      afficherErreur("telephone", false);
+    }
+
+    // Adresse (non vide)
+    var adresse = document.getElementById("adresse").value.trim();
+    if (adresse.length === 0) {
+      afficherErreur("adresse", true); valide = false;
+    } else {
+      afficherErreur("adresse", false);
+    }
+
+    // Ville (non vide)
+    var ville = document.getElementById("ville").value.trim();
+    if (ville.length === 0) {
+      afficherErreur("ville", true); valide = false;
+    } else {
+      afficherErreur("ville", false);
+    }
+
+    // Code postal (4 chiffres)
+    var cp = document.getElementById("codepostal").value.trim();
+    var cpRegex = /^\d{4}$/;
+    if (!cpRegex.test(cp)) {
+      afficherErreur("codepostal", true); valide = false;
+    } else {
+      afficherErreur("codepostal", false);
+    }
+
+    // Mot de passe (min 6 caractères)
+    var mdp = document.getElementById("motdepasse").value;
+    if (mdp.length < 6) {
+      afficherErreur("motdepasse", true); valide = false;
+    } else {
+      afficherErreur("motdepasse", false);
+    }
+
+    // Confirmation mot de passe
+    var conf = document.getElementById("confirmer").value;
+    if (conf !== mdp) {
+      afficherErreur("confirmer", true); valide = false;
+    } else {
+      afficherErreur("confirmer", false);
+    }
+
+    // Si tout est valide
+    if (valide) {
+      alert("✅ Inscription réussie ! Bienvenue sur BookCycle.");
+      document.getElementById("registerForm").reset();
+      // Réinitialiser les styles verts
+      document.querySelectorAll("input").forEach(function(input) {
+        input.classList.remove("valid");
+      });
+    }
+  }
+
+  // Validation en temps réel à chaque saisie
+  document.getElementById("nom").addEventListener("input", function() {
+    afficherErreur("nom", this.value.trim().length < 2);
+  });
+  document.getElementById("prenom").addEventListener("input", function() {
+    afficherErreur("prenom", this.value.trim().length < 2);
+  });
+  document.getElementById("email").addEventListener("input", function() {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    afficherErreur("email", !emailRegex.test(this.value.trim()));
+  });
+  document.getElementById("telephone").addEventListener("input", function() {
+    afficherErreur("telephone", !/^\d{8}$/.test(this.value.trim()));
+  });
+  document.getElementById("adresse").addEventListener("input", function() {
+    afficherErreur("adresse", this.value.trim().length === 0);
+  });
+  document.getElementById("ville").addEventListener("input", function() {
+    afficherErreur("ville", this.value.trim().length === 0);
+  });
+  document.getElementById("codepostal").addEventListener("input", function() {
+    afficherErreur("codepostal", !/^\d{4}$/.test(this.value.trim()));
+  });
+  document.getElementById("motdepasse").addEventListener("input", function() {
+    afficherErreur("motdepasse", this.value.length < 6);
+  });
+  document.getElementById("confirmer").addEventListener("input", function() {
+    var mdp = document.getElementById("motdepasse").value;
+    afficherErreur("confirmer", this.value !== mdp);
+  });
+</script>
+
+</body>
+</html>

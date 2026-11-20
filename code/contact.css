@@ -1,0 +1,329 @@
+/* ========== GOOGLE FONTS ========== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ========== RESET & BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+    background-image: url('bg_section2.png');
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: #2d3748;
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.logo img {
+    width: 46px;
+}
+
+.logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.3px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.icon {
+    font-size: 16px;
+    color: #764ba2;
+    transition: 0.3s;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.4rem 0.6rem;
+}
+
+.nav-links a:hover {
+    color: #667eea;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+/*  SELL BUTTON in navbar */
+.btn-sell {
+    display: flex !important;
+    align-items: center;
+    gap: 0.4rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    font-size: 0.88rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 14px rgba(102, 126, 234, 0.35);
+    white-space: nowrap;
+}
+
+.btn-sell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5) !important;
+    color: white !important;
+}
+
+.btn-sell::after {
+    display: none !important;
+}
+
+.icon-sell {
+    font-size: 14px;
+    color: white !important;
+}
+
+
+/* ========== FORM SECTION ========== */
+.form-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2.5rem 5%;
+    min-height: calc(100vh - 80px - 80px);
+}
+
+/* ========== FORM CARD — glassmorphism comme hero/s2 ========== */
+.form-container {
+    /* même style que .hero et #s2 de acceuil2 */
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    border-radius: 30px;
+    padding: 3rem 3.5rem;
+    width: 100%;
+    max-width: 620px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-container h2 {
+    text-align: center;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.3rem;
+}
+
+/* ========== FORM GROUPS ========== */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.4rem 1.6rem;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.form-group h3 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #764ba2;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(118, 75, 162, 0.15);
+    margin-bottom: 0.2rem;
+}
+
+/* ========== INPUTS ========== */
+.form-group input,
+.form-group select {
+    border: 2px solid rgba(200, 190, 230, 0.6);
+    border-radius: 12px;
+    padding: 0.8rem 1.1rem;
+    font-size: 0.92rem;
+    font-family: 'Poppins', sans-serif;
+    color: #2d3748;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.12);
+    background: white;
+}
+
+.form-group input::placeholder {
+    color: #b0aac0;
+    font-size: 0.88rem;
+}
+
+/* ========== INPUT ROW (2 colonnes) ========== */
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+/* ========== SUBMIT BUTTON ========== */
+.form-container button[type="submit"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.35);
+    width: 100%;
+    margin-top: 0.5rem;
+    letter-spacing: 0.3px;
+}
+
+.form-container button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+/* ========== FOOTER ========== */
+footer {
+    background: rgba(255, 255, 255, 0.97);
+    margin-top: 3rem;
+    padding: 2rem 5%;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+footer p {
+    color: #718096;
+    font-size: 0.88rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: #a0aec0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover { color: #667eea; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .form-container {
+        padding: 2rem 1.5rem;
+        border-radius: 24px;
+    }
+
+    .form-container h2 {
+        font-size: 1.6rem;
+    }
+
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+}
